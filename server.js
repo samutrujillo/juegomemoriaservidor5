@@ -70,8 +70,8 @@ let saveTimeout = null;
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production'
         ? [
-            process.env.CLIENT_URL || 'https://juegomemoriacliente5.onrender.com',
-            'https://juegomemoriacliente5.onrender.com' // Sin la barra al final
+            process.env.CLIENT_URL || 'https://juegomemoriacliente5-dfzg.onrender.com',
+            'https://juegomemoriacliente5-dfzg.onrender.com' // Sin la barra al final
         ]
         : ['http://localhost:3000'],
     methods: ['GET', 'POST'],
@@ -3190,7 +3190,7 @@ app.get('/game-state-summary', (req, res) => {
 
 // Logs de inicio
 console.log('Entorno:', process.env.NODE_ENV);
-console.log('URL del cliente:', process.env.CLIENT_URL || 'https://juegomemoriacliente5.onrender.com');
+console.log('URL del cliente:', process.env.CLIENT_URL || 'https://juegomemoriacliente5-dfzg.onrender.com');
 console.log('Firebase:', db ? 'Configurado' : 'No configurado');
 console.log('Base de datos Firebase:', 'https://juego-memoria-sexto-default-rtdb.firebaseio.com');
 
