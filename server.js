@@ -774,10 +774,10 @@ function generateBoard() {
 
         // Crear 2 fichas ganadoras y 2 perdedoras para esta hilera
         for (let i = 0; i < 2; i++) {
-            rowTiles.push({ value: 30000, revealed: false });  // Ganadora
+            rowTiles.push({ value: 5000, revealed: false });  // Ganadora
         }
         for (let i = 0; i < 2; i++) {
-            rowTiles.push({ value: -30000, revealed: false }); // Perdedora
+            rowTiles.push({ value: -5000, revealed: false }); // Perdedora
         }
 
         // Mezclar las fichas dentro de esta hilera
@@ -885,7 +885,7 @@ function verifyAndFixGameState() {
         // Si la ficha no existe o tiene valores inválidos, corregirla
         if (!gameState.board[i] || gameState.board[i].value === undefined) {
             gameState.board[i] = {
-                value: (Math.random() > 0.5 ? 30000 : -30000),
+                value: (Math.random() > 0.5 ? 5000 : -5000),
                 revealed: false
             };
             fichasCorregidas++;
@@ -2074,10 +2074,10 @@ io.on('connection', (socket) => {
         }
 
         // Asegurarse de que los valores de punto son precisamente los esperados
-        if (gameState.board[tileIndex].value !== 30000 && gameState.board[tileIndex].value !== -30000) {
+        if (gameState.board[tileIndex].value !== 5000 && gameState.board[tileIndex].value !== -5000) {
             console.error(`VALOR DE FICHA INCORRECTO: ${gameState.board[tileIndex].value}`);
             // Corregir el valor
-            gameState.board[tileIndex].value = Math.sign(gameState.board[tileIndex].value) * 30000;
+            gameState.board[tileIndex].value = Math.sign(gameState.board[tileIndex].value) * 5000;
         }
 
         // Obtener o inicializar selecciones del jugador
@@ -2135,7 +2135,7 @@ io.on('connection', (socket) => {
         const tileValue = gameState.board[tileIndex].value;
 
         // Verificar si hay una discrepancia grande entre el puntaje del cliente y del servidor
-        if (currentScore !== undefined && Math.abs(currentScore - user.score) > 30000) {
+        if (currentScore !== undefined && Math.abs(currentScore - user.score) > 5000) {
             console.warn(`ADVERTENCIA: Posible inconsistencia en puntaje del cliente ${currentScore} vs servidor ${user.score}`);
         }
 
