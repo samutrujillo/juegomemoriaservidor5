@@ -777,7 +777,7 @@ function generateBoard() {
             rowTiles.push({ value: 5000, revealed: false });  // Ganadora
         }
         for (let i = 0; i < 2; i++) {
-            rowTiles.push({ value: -5000, revealed: false }); // Perdedora
+            rowTiles.push({ value: -6000, revealed: false }); // Perdedora
         }
 
         // Mezclar las fichas dentro de esta hilera
@@ -885,7 +885,7 @@ function verifyAndFixGameState() {
         // Si la ficha no existe o tiene valores inválidos, corregirla
         if (!gameState.board[i] || gameState.board[i].value === undefined) {
             gameState.board[i] = {
-                value: (Math.random() > 0.5 ? 5000 : -5000),
+                value: (Math.random() > 0.5 ? 5000 : -6000),
                 revealed: false
             };
             fichasCorregidas++;
@@ -2074,7 +2074,7 @@ io.on('connection', (socket) => {
         }
 
         // Asegurarse de que los valores de punto son precisamente los esperados
-        if (gameState.board[tileIndex].value !== 5000 && gameState.board[tileIndex].value !== -5000) {
+        if (gameState.board[tileIndex].value !== 5000 && gameState.board[tileIndex].value !== -6000) {
             console.error(`VALOR DE FICHA INCORRECTO: ${gameState.board[tileIndex].value}`);
             // Corregir el valor
             gameState.board[tileIndex].value = Math.sign(gameState.board[tileIndex].value) * 5000;
